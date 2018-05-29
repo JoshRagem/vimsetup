@@ -1,8 +1,15 @@
+set undodir=$HOME/.vim/undodir/
+set undofile
 set rtp+=~/.fzf/bin/fzf
 set completeopt-=preview
 set number
 set numberwidth=2
 set hidden
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 colorscheme darkblack
 
 function OpenInNewWindow(file)
@@ -29,6 +36,7 @@ map <silent> <leader>qq :q<cr>
 map <silent> <leader>qs :x<cr>
 noremap <leader>y "+y
 noremap <leader>pp "+p
+map <silent> <leader>rs :call lsc#server#restart()<cr>
 
 command -nargs=1 -complete=custom,CompleteFileFind Open :call OpenInNewWindow(<args>)
 command -nargs=0 Back :e #
@@ -44,5 +52,6 @@ let g:lsc_trace_level = 'off'
 let g:lsc_server_commands = {
     \ 'rust': 'rls',
     \ 'scala':'node '.expand('~/bin/sbt-server-stdio.js'),
-    \ 'sbt':'node '.expand('~/bin/sbt-server-stdio.js')
+    \ 'sbt':'node '.expand('~/bin/sbt-server-stdio.js'),
+    \ 'sh':'bash-language-server start'
     \}
