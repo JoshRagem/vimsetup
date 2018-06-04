@@ -26,7 +26,7 @@ function CompleteFileFind(...)
 endfunction
 
 autocmd BufWritePre * :%s/\s\+$//e
-autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("tmux rename-window -t \"$(tmux display-message -pt \"$TMUX_PANE\" '#{window_index}')\" " . expand("%:t"))
+autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("[[ \"$TERM\" =~ \"screen\".* ]] && tmux rename-window -t \"$(tmux display-message -pt \"$TMUX_PANE\" '#{window_index}')\" " . expand("%:t"))
 
 let mapleader = "\<Space>"
 map <silent> <leader>fo :Files .<cr>
@@ -35,7 +35,7 @@ map <silent> <leader>fs :w<cr>
 map <silent> <leader>qq :q<cr>
 map <silent> <leader>qs :x<cr>
 noremap <leader>y "+y
-noremap <leader>pp "+p
+noremap <leader>p "+
 map <silent> <leader>rs :call lsc#server#restart()<cr>
 
 command -nargs=1 -complete=custom,CompleteFileFind Open :call OpenInNewWindow(<args>)
