@@ -50,7 +50,7 @@ call plug#end()
 let g:lsc_auto_map = v:true " Use defaults
 let g:lsc_trace_level = 'off'
 let g:lsc_server_commands = {
-    \ 'rust': 'rls',
+    \ 'rust': 'rustup run nightly rls',
     \ 'scala':'node '.expand('~/bin/sbt-server-stdio.js'),
     \ 'sbt':'node '.expand('~/bin/sbt-server-stdio.js'),
     \ 'sh':'bash-language-server start'
