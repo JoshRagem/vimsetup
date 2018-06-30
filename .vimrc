@@ -6,8 +6,9 @@ set number
 set numberwidth=2
 set hidden
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 colorscheme darkblack
@@ -46,6 +47,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'natebosch/vim-lsc'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 let g:lsc_auto_map = v:true " Use defaults
 let g:lsc_trace_level = 'off'
@@ -55,3 +57,5 @@ let g:lsc_server_commands = {
     \ 'sbt':'node '.expand('~/bin/sbt-server-stdio.js'),
     \ 'sh':'bash-language-server start'
     \}
+let g:rustfmt_autosave = 1
+
