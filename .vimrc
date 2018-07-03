@@ -1,3 +1,11 @@
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'flazz/vim-colorschemes', { 'dir': '~/.vim/colors' }
+Plug 'natebosch/vim-lsc'
+Plug 'rust-lang/rust.vim'
+call plug#end()
+
 set undodir=$HOME/.vim/undodir/
 set undofile
 set rtp+=~/.fzf/bin/fzf
@@ -42,17 +50,11 @@ map <silent> <leader>rs :call lsc#server#restart()<cr>
 command -nargs=1 -complete=custom,CompleteFileFind Open :call OpenInNewWindow(<args>)
 command -nargs=0 Back :e #
 
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'flazz/vim-colorschemes'
-Plug 'natebosch/vim-lsc'
-Plug 'rust-lang/rust.vim'
-call plug#end()
 let g:lsc_auto_map = v:true " Use defaults
 let g:lsc_trace_level = 'off'
 let g:lsc_server_commands = {
     \ 'rust': 'rustup run nightly rls',
+    \ 'ruby': 'solargraph stdio',
     \ 'scala':'node '.expand('~/bin/sbt-server-stdio.js'),
     \ 'sbt':'node '.expand('~/bin/sbt-server-stdio.js'),
     \ 'sh':'bash-language-server start'
