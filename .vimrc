@@ -4,7 +4,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'flazz/vim-colorschemes', { 'dir': '~/.vim/colors' }
 Plug 'natebosch/vim-lsc'
 Plug 'rust-lang/rust.vim'
+Plug 'godlygeek/tabular'
 call plug#end()
+
+let $FZF_DEFAULT_COMMAND='rg --files'
 
 set undodir=$HOME/.vim/undodir/
 set undofile
@@ -38,7 +41,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufReadPost,FileReadPost,BufNewFile,BufEnter * call system("[[ \"$TERM\" =~ \"screen\".* ]] && tmux rename-window -t \"$(tmux display-message -pt \"$TMUX_PANE\" '#{window_index}')\" " . expand("%:t"))
 
 let mapleader = "\<Space>"
-map <silent> <leader>fo :Files .<cr>
+map <silent> <leader>fo :GFiles .<cr>
 map <silent> <leader>fn :call feedkeys(":Open \<tab>", 'tn')<cr>
 map <silent> <leader>fs :w<cr>
 map <silent> <leader>qq :q<cr>
@@ -53,11 +56,11 @@ command -nargs=0 Back :e #
 let g:lsc_auto_map = v:true " Use defaults
 let g:lsc_trace_level = 'off'
 let g:lsc_server_commands = {
-    \ 'rust': 'rustup run nightly rls',
-    \ 'ruby': 'solargraph stdio',
-    \ 'scala':'node '.expand('~/bin/sbt-server-stdio.js'),
-    \ 'sbt':'node '.expand('~/bin/sbt-server-stdio.js'),
-    \ 'sh':'bash-language-server start'
+    \ 'rust'  : 'rustup run nightly rls',
+    \ 'ruby'  : 'solargraph stdio',
+    \ 'scala' : 'node '.expand('~/bin/sbt-server-stdio.js'),
+    \ 'sbt'   : 'node '.expand('~/bin/sbt-server-stdio.js'),
+    \ 'sh'    : 'bash-language-server start'
     \}
 let g:rustfmt_autosave = 1
 
