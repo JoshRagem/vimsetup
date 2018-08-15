@@ -22,7 +22,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 
-colorscheme darkblack
+silent! colorscheme darkblack
 
 function OpenInNewWindow(file)
 	call system("byobu new-window -n ".a:file." 'vim ".a:file."'")
