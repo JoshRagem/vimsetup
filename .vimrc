@@ -9,6 +9,7 @@ call plug#end()
 
 let $FZF_DEFAULT_COMMAND='rg --files'
 
+set directory=/tmp/vim//
 set undodir=$HOME/.vim/undodir/
 set undofile
 set rtp+=~/.fzf/bin/fzf
@@ -21,6 +22,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set expandtab
+set backspace=indent,eol,start
 
 silent! colorscheme darkblack
 
